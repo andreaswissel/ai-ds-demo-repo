@@ -1,0 +1,17 @@
+{
+    "mcp": {
+        "servers": {
+            "figma-mcp-server-local": {
+                "command": "node",
+                "args": [
+                    "~/dev/cmp-agent/dist/index.js"
+                ],
+                "cwd": "${workspaceFolder}", 
+                "env": {
+                    "NODE_ENV": "production",
+                    "LOG_LEVEL": "info"
+                }
+            },
+        }
+    }
+}

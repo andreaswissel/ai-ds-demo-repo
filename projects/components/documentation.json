@@ -11,84 +11,84 @@
     "miscellaneous": {
         "variables": [
             {
-                "name": "Large",
+                "name": "AllSizes",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/components/src/stories/button.stories.ts",
+                "file": "projects/components/src/lib/cmp-button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {\n    size: 'large',\n    label: 'Button',\n  },\n}"
+                "type": "ButtonStory",
+                "defaultValue": "{\n  render: () => ({\n    template: `\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap;\">\n        <cmp-button size=\"sm\">Small</cmp-button>\n        <cmp-button size=\"md\">Medium</cmp-button>\n        <cmp-button size=\"lg\">Large</cmp-button>\n        <cmp-button size=\"xl\">X-Large</cmp-button>\n        <cmp-button size=\"2xl\">2X-Large</cmp-button>\n      </div>\n    `,\n  }),\n}"
             },
             {
-                "name": "LoggedIn",
+                "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/components/src/stories/header.stories.ts",
+                "file": "projects/components/src/lib/cmp-button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {\n    user: {\n      name: 'Jane Doe',\n    },\n  },\n}"
+                "type": "ButtonStory",
+                "defaultValue": "{\n  render: (args) => ({\n    props: args,\n    template: `<cmp-button \n      [size]=\"size\" \n      [hierarchy]=\"hierarchy\" \n      [icon]=\"icon\" \n      [disabled]=\"disabled\" \n      [type]=\"type\"\n    >\n      Button\n    </cmp-button>`,\n  }),\n}"
             },
             {
-                "name": "LoggedIn",
+                "name": "defaultOptions",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/components/src/stories/page.stories.ts",
+                "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const loginButton = canvas.getByRole('button', { name: /Log in/i });\n    await expect(loginButton).toBeInTheDocument();\n    await userEvent.click(loginButton);\n    await expect(loginButton).not.toBeInTheDocument();\n\n    const logoutButton = canvas.getByRole('button', { name: /Log out/i });\n    await expect(logoutButton).toBeInTheDocument();\n  },\n}"
+                "type": "[]",
+                "defaultValue": "['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5']"
             },
             {
-                "name": "LoggedOut",
+                "name": "DisabledStates",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/components/src/stories/header.stories.ts",
+                "file": "projects/components/src/lib/cmp-button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{}"
+                "type": "ButtonStory",
+                "defaultValue": "{\n  render: () => ({\n    template: `\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-bottom: 16px;\">\n        <cmp-button hierarchy=\"primary\" [disabled]=\"true\">Primary</cmp-button>\n        <cmp-button hierarchy=\"secondary-gray\" [disabled]=\"true\">Secondary Gray</cmp-button>\n        <cmp-button hierarchy=\"secondary-color\" [disabled]=\"true\">Secondary Color</cmp-button>\n      </div>\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-bottom: 16px;\">\n        <cmp-button hierarchy=\"tertiary-gray\" [disabled]=\"true\">Tertiary Gray</cmp-button>\n        <cmp-button hierarchy=\"tertiary-color\" [disabled]=\"true\">Tertiary Color</cmp-button>\n      </div>\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap;\">\n        <cmp-button hierarchy=\"link-gray\" [disabled]=\"true\">Link Gray</cmp-button>\n        <cmp-button hierarchy=\"link-color\" [disabled]=\"true\">Link Color</cmp-button>\n      </div>\n    `,\n  }),\n}"
             },
             {
-                "name": "LoggedOut",
+                "name": "Interactive",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/components/src/stories/page.stories.ts",
+                "file": "projects/components/src/lib/cmp-button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{}"
+                "type": "ButtonStory",
+                "defaultValue": "{\n  render: (args) => ({\n    props: {\n      ...args,\n      onClick: (event: Event) => {\n        console.log('Button clicked!', event);\n        alert('Button clicked! Check console for event details.');\n      },\n    },\n    template: `<cmp-button \n      [size]=\"size\" \n      [hierarchy]=\"hierarchy\" \n      [icon]=\"icon\" \n      [disabled]=\"disabled\" \n      [type]=\"type\"\n      (buttonClick)=\"onClick($event)\"\n    >\n      Click Me!\n    </cmp-button>`,\n  }),\n}"
             },
             {
-                "name": "meta",
+                "name": "Links",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/components/src/stories/button.stories.ts",
+                "file": "projects/components/src/lib/cmp-button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<ButtonComponent>",
-                "defaultValue": "{\n  title: 'Example/Button',\n  component: ButtonComponent,\n  tags: ['autodocs'],\n  argTypes: {\n    backgroundColor: {\n      control: 'color',\n    },\n  },\n  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args\n  args: { onClick: fn() },\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/components/src/stories/header.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<HeaderComponent>",
-                "defaultValue": "{\n  title: 'Example/Header',\n  component: HeaderComponent,\n  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs\n  tags: ['autodocs'],\n  parameters: {\n    // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout\n    layout: 'fullscreen',\n  },\n  args: {\n    onLogin: fn(),\n    onLogout: fn(),\n    onCreateAccount: fn(),\n  },\n}"
+                "type": "ButtonStory",
+                "defaultValue": "{\n  render: () => ({\n    template: `\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-bottom: 16px;\">\n        <cmp-button hierarchy=\"link-gray\" size=\"sm\">Button</cmp-button>\n        <cmp-button hierarchy=\"link-gray\" size=\"md\">Button</cmp-button>  \n        <cmp-button hierarchy=\"link-gray\" size=\"lg\">Button</cmp-button>\n        <cmp-button hierarchy=\"link-gray\" size=\"xl\">Button</cmp-button>\n        <cmp-button hierarchy=\"link-gray\" size=\"2xl\">Button</cmp-button>\n      </div>\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap;\">\n        <cmp-button hierarchy=\"link-color\" size=\"sm\">Button</cmp-button>\n        <cmp-button hierarchy=\"link-color\" size=\"md\">Button</cmp-button>  \n        <cmp-button hierarchy=\"link-color\" size=\"lg\">Button</cmp-button>\n        <cmp-button hierarchy=\"link-color\" size=\"xl\">Button</cmp-button>\n        <cmp-button hierarchy=\"link-color\" size=\"2xl\">Button</cmp-button>\n      </div>\n    `,\n  }),\n}"
             },
             {
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/components/src/stories/page.stories.ts",
+                "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<PageComponent>",
-                "defaultValue": "{\n  title: 'Example/Page',\n  component: PageComponent,\n  parameters: {\n    // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout\n    layout: 'fullscreen',\n  },\n}"
+                "type": "Meta<CmpDropdownComponent>",
+                "defaultValue": "{\n  title: 'SCOTT Components/Dropdown',\n  component: CmpDropdownComponent,\n  parameters: {\n    layout: 'centered',\n  },\n  argTypes: {\n    type: {\n      control: { type: 'select' },\n      options: ['default', 'icon-leading', 'avatar-leading', 'dot-leading', 'search', 'tags'],\n    },\n    state: {\n      control: { type: 'select' },\n      options: ['default', 'placeholder', 'focused', 'open'],\n    },\n    placeholder: {\n      control: { type: 'text' },\n    },\n    label: {\n      control: { type: 'text' },\n    },\n    hintText: {\n      control: { type: 'text' },\n    },\n    supportingText: {\n      control: { type: 'text' },\n    },\n    disabled: {\n      control: { type: 'boolean' },\n    },\n    showLabel: {\n      control: { type: 'boolean' },\n    },\n    showHintText: {\n      control: { type: 'boolean' },\n    },\n    showSupportingText: {\n      control: { type: 'boolean' },\n    },\n    showScrollBar: {\n      control: { type: 'boolean' },\n    },\n    iconLeading: {\n      control: { type: 'text' },\n    },\n    avatarSrc: {\n      control: { type: 'text' },\n    },\n    options: {\n      control: { type: 'object' },\n    },\n    selectedValue: {\n      control: { type: 'text' },\n    },\n    ariaLabel: {\n      control: { type: 'text' },\n    },\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/cmp-button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<CmpButtonComponent>",
+                "defaultValue": "{\n  title: 'Components/Button',\n  component: CmpButtonComponent,\n  parameters: {\n    layout: 'centered',\n  },\n  argTypes: {\n    size: {\n      control: { type: 'select' },\n      options: ['sm', 'md', 'lg', 'xl', '2xl'],\n    },\n    hierarchy: {\n      control: { type: 'select' },\n      options: ['primary', 'secondary-gray', 'secondary-color', 'tertiary-gray', 'tertiary-color', 'link-gray', 'link-color'],\n    },\n    icon: {\n      control: { type: 'select' },\n      options: ['default', 'dot-leading', 'only'],\n    },\n    disabled: {\n      control: 'boolean',\n    },\n    type: {\n      control: { type: 'select' },\n      options: ['button', 'submit', 'reset'],\n    },\n  },\n  args: {\n    size: 'md',\n    hierarchy: 'primary',\n    icon: 'default',\n    disabled: false,\n    type: 'button',\n  },\n}"
             },
             {
                 "name": "preview",
@@ -104,41 +104,201 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/components/src/stories/button.stories.ts",
+                "file": "projects/components/src/lib/cmp-button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {\n    primary: true,\n    label: 'Button',\n  },\n}"
+                "type": "ButtonStory",
+                "defaultValue": "{\n  render: () => ({\n    template: `\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap;\">\n        <cmp-button hierarchy=\"primary\" size=\"sm\">Button</cmp-button>\n        <cmp-button hierarchy=\"primary\" size=\"md\">Button</cmp-button>  \n        <cmp-button hierarchy=\"primary\" size=\"lg\">Button</cmp-button>\n        <cmp-button hierarchy=\"primary\" size=\"xl\">Button</cmp-button>\n        <cmp-button hierarchy=\"primary\" size=\"2xl\">Button</cmp-button>\n      </div>\n    `,\n  }),\n}"
             },
             {
-                "name": "Secondary",
+                "name": "SCOTT_AvatarLeading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/components/src/stories/button.stories.ts",
+                "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    label: 'Button',\n  },\n}"
+                "defaultValue": "{\n  args: {\n    type: 'avatar-leading',\n    state: 'placeholder',\n    placeholder: 'Select with avatar',\n    label: 'Avatar Leading Dropdown',\n    avatarSrc: 'https://via.placeholder.com/24x24',\n    options: defaultOptions,\n  },\n}"
             },
             {
-                "name": "Small",
+                "name": "SCOTT_Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/components/src/stories/button.stories.ts",
+                "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    size: 'small',\n    label: 'Button',\n  },\n}"
+                "defaultValue": "{\n  args: {\n    type: 'default',\n    state: 'placeholder',\n    placeholder: 'Select an option',\n    label: 'Choose Option',\n    options: defaultOptions,\n  },\n}"
+            },
+            {
+                "name": "SCOTT_Disabled",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    type: 'default',\n    state: 'placeholder',\n    placeholder: 'Disabled dropdown',\n    label: 'Disabled Dropdown',\n    disabled: true,\n    options: defaultOptions,\n  },\n}"
+            },
+            {
+                "name": "SCOTT_DotLeading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    type: 'dot-leading',\n    state: 'placeholder',\n    placeholder: 'Select with dot',\n    label: 'Dot Leading Dropdown',\n    options: defaultOptions,\n  },\n}"
+            },
+            {
+                "name": "SCOTT_Focused",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    type: 'default',\n    state: 'focused',\n    placeholder: 'Focused dropdown',\n    label: 'Focused State',\n    options: defaultOptions,\n  },\n}"
+            },
+            {
+                "name": "SCOTT_IconLeading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    type: 'icon-leading',\n    state: 'placeholder',\n    placeholder: 'Select with icon',\n    label: 'Icon Leading Dropdown',\n    iconLeading: '🔍',\n    options: defaultOptions,\n  },\n}"
+            },
+            {
+                "name": "SCOTT_NoLabel",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    type: 'default',\n    state: 'placeholder',\n    placeholder: 'Select an option',\n    label: 'Hidden Label',\n    showLabel: false,\n    options: defaultOptions,\n  },\n}"
+            },
+            {
+                "name": "SCOTT_NoScrollBar",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    type: 'default',\n    state: 'open',\n    placeholder: 'Select an option',\n    label: 'No Scroll Bar',\n    showScrollBar: false,\n    options: defaultOptions,\n  },\n}"
+            },
+            {
+                "name": "SCOTT_Open",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    type: 'default',\n    state: 'open',\n    placeholder: 'Open dropdown',\n    label: 'Open State',\n    options: defaultOptions,\n  },\n}"
+            },
+            {
+                "name": "SCOTT_Search",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    type: 'search',\n    state: 'placeholder',\n    placeholder: 'Search and select',\n    label: 'Search Dropdown',\n    options: defaultOptions,\n  },\n}"
+            },
+            {
+                "name": "SCOTT_Tags",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    type: 'tags',\n    state: 'placeholder',\n    placeholder: 'Select tags',\n    label: 'Tags Dropdown',\n    options: defaultOptions,\n  },\n}"
+            },
+            {
+                "name": "SCOTT_WithHintText",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    type: 'default',\n    state: 'placeholder',\n    placeholder: 'Select an option',\n    label: 'Dropdown with Hint',\n    hintText: 'Choose from the available options below',\n    options: defaultOptions,\n  },\n}"
+            },
+            {
+                "name": "SCOTT_WithSelectedValue",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    type: 'default',\n    state: 'default',\n    placeholder: 'Select an option',\n    label: 'Pre-selected Dropdown',\n    selectedValue: 'Option 2',\n    options: defaultOptions,\n  },\n}"
+            },
+            {
+                "name": "SCOTT_WithSupportingText",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    type: 'default',\n    state: 'placeholder',\n    placeholder: 'Select an option',\n    label: 'Dropdown with Support',\n    supportingText: 'This is supporting text to help users',\n    options: defaultOptions,\n  },\n}"
+            },
+            {
+                "name": "SecondaryColor",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/cmp-button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "ButtonStory",
+                "defaultValue": "{\n  render: () => ({\n    template: `\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap;\">\n        <cmp-button hierarchy=\"secondary-color\" size=\"sm\">Button</cmp-button>\n        <cmp-button hierarchy=\"secondary-color\" size=\"md\">Button</cmp-button>  \n        <cmp-button hierarchy=\"secondary-color\" size=\"lg\">Button</cmp-button>\n        <cmp-button hierarchy=\"secondary-color\" size=\"xl\">Button</cmp-button>\n        <cmp-button hierarchy=\"secondary-color\" size=\"2xl\">Button</cmp-button>\n      </div>\n    `,\n  }),\n}"
+            },
+            {
+                "name": "SecondaryGray",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/cmp-button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "ButtonStory",
+                "defaultValue": "{\n  render: () => ({\n    template: `\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap;\">\n        <cmp-button hierarchy=\"secondary-gray\" size=\"sm\">Button</cmp-button>\n        <cmp-button hierarchy=\"secondary-gray\" size=\"md\">Button</cmp-button>  \n        <cmp-button hierarchy=\"secondary-gray\" size=\"lg\">Button</cmp-button>\n        <cmp-button hierarchy=\"secondary-gray\" size=\"xl\">Button</cmp-button>\n        <cmp-button hierarchy=\"secondary-gray\" size=\"2xl\">Button</cmp-button>\n      </div>\n    `,\n  }),\n}"
+            },
+            {
+                "name": "Tertiary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/cmp-button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "ButtonStory",
+                "defaultValue": "{\n  render: () => ({\n    template: `\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-bottom: 16px;\">\n        <cmp-button hierarchy=\"tertiary-gray\" size=\"sm\">Button</cmp-button>\n        <cmp-button hierarchy=\"tertiary-gray\" size=\"md\">Button</cmp-button>  \n        <cmp-button hierarchy=\"tertiary-gray\" size=\"lg\">Button</cmp-button>\n        <cmp-button hierarchy=\"tertiary-gray\" size=\"xl\">Button</cmp-button>\n        <cmp-button hierarchy=\"tertiary-gray\" size=\"2xl\">Button</cmp-button>\n      </div>\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap;\">\n        <cmp-button hierarchy=\"tertiary-color\" size=\"sm\">Button</cmp-button>\n        <cmp-button hierarchy=\"tertiary-color\" size=\"md\">Button</cmp-button>  \n        <cmp-button hierarchy=\"tertiary-color\" size=\"lg\">Button</cmp-button>\n        <cmp-button hierarchy=\"tertiary-color\" size=\"xl\">Button</cmp-button>\n        <cmp-button hierarchy=\"tertiary-color\" size=\"2xl\">Button</cmp-button>\n      </div>\n    `,\n  }),\n}"
+            },
+            {
+                "name": "WithIcons",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/cmp-button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "ButtonStory",
+                "defaultValue": "{\n  render: () => ({\n    template: `\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-bottom: 16px;\">\n        <cmp-button hierarchy=\"primary\" icon=\"dot-leading\">Button</cmp-button>\n        <cmp-button hierarchy=\"secondary-gray\" icon=\"dot-leading\">Button</cmp-button>\n        <cmp-button hierarchy=\"secondary-color\" icon=\"dot-leading\">Button</cmp-button>\n      </div>\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap;\">\n        <cmp-button hierarchy=\"primary\" icon=\"only\" size=\"sm\" ariaLabel=\"Primary icon button\"></cmp-button>\n        <cmp-button hierarchy=\"secondary-gray\" icon=\"only\" size=\"md\" ariaLabel=\"Secondary icon button\"></cmp-button>\n        <cmp-button hierarchy=\"tertiary-color\" icon=\"only\" size=\"lg\" ariaLabel=\"Tertiary icon button\"></cmp-button>\n      </div>\n    `,\n  }),\n}"
             }
         ],
         "functions": [],
         "typealiases": [
             {
-                "name": "Story",
+                "name": "ButtonStory",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<ButtonComponent>",
-                "file": "projects/components/src/stories/button.stories.ts",
+                "rawtype": "StoryObj<CmpButtonComponent>",
+                "file": "projects/components/src/lib/cmp-button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -148,19 +308,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<HeaderComponent>",
-                "file": "projects/components/src/stories/header.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<PageComponent>",
-                "file": "projects/components/src/stories/page.stories.ts",
+                "rawtype": "StoryObj<CmpDropdownComponent>",
+                "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -169,120 +318,278 @@
         ],
         "enumerations": [],
         "groupedVariables": {
-            "projects/components/src/stories/button.stories.ts": [
+            "projects/components/src/lib/cmp-button.component.stories.ts": [
                 {
-                    "name": "Large",
+                    "name": "AllSizes",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/components/src/stories/button.stories.ts",
+                    "file": "projects/components/src/lib/cmp-button.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n    size: 'large',\n    label: 'Button',\n  },\n}"
+                    "type": "ButtonStory",
+                    "defaultValue": "{\n  render: () => ({\n    template: `\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap;\">\n        <cmp-button size=\"sm\">Small</cmp-button>\n        <cmp-button size=\"md\">Medium</cmp-button>\n        <cmp-button size=\"lg\">Large</cmp-button>\n        <cmp-button size=\"xl\">X-Large</cmp-button>\n        <cmp-button size=\"2xl\">2X-Large</cmp-button>\n      </div>\n    `,\n  }),\n}"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/cmp-button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ButtonStory",
+                    "defaultValue": "{\n  render: (args) => ({\n    props: args,\n    template: `<cmp-button \n      [size]=\"size\" \n      [hierarchy]=\"hierarchy\" \n      [icon]=\"icon\" \n      [disabled]=\"disabled\" \n      [type]=\"type\"\n    >\n      Button\n    </cmp-button>`,\n  }),\n}"
+                },
+                {
+                    "name": "DisabledStates",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/cmp-button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ButtonStory",
+                    "defaultValue": "{\n  render: () => ({\n    template: `\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-bottom: 16px;\">\n        <cmp-button hierarchy=\"primary\" [disabled]=\"true\">Primary</cmp-button>\n        <cmp-button hierarchy=\"secondary-gray\" [disabled]=\"true\">Secondary Gray</cmp-button>\n        <cmp-button hierarchy=\"secondary-color\" [disabled]=\"true\">Secondary Color</cmp-button>\n      </div>\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-bottom: 16px;\">\n        <cmp-button hierarchy=\"tertiary-gray\" [disabled]=\"true\">Tertiary Gray</cmp-button>\n        <cmp-button hierarchy=\"tertiary-color\" [disabled]=\"true\">Tertiary Color</cmp-button>\n      </div>\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap;\">\n        <cmp-button hierarchy=\"link-gray\" [disabled]=\"true\">Link Gray</cmp-button>\n        <cmp-button hierarchy=\"link-color\" [disabled]=\"true\">Link Color</cmp-button>\n      </div>\n    `,\n  }),\n}"
+                },
+                {
+                    "name": "Interactive",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/cmp-button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ButtonStory",
+                    "defaultValue": "{\n  render: (args) => ({\n    props: {\n      ...args,\n      onClick: (event: Event) => {\n        console.log('Button clicked!', event);\n        alert('Button clicked! Check console for event details.');\n      },\n    },\n    template: `<cmp-button \n      [size]=\"size\" \n      [hierarchy]=\"hierarchy\" \n      [icon]=\"icon\" \n      [disabled]=\"disabled\" \n      [type]=\"type\"\n      (buttonClick)=\"onClick($event)\"\n    >\n      Click Me!\n    </cmp-button>`,\n  }),\n}"
+                },
+                {
+                    "name": "Links",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/cmp-button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ButtonStory",
+                    "defaultValue": "{\n  render: () => ({\n    template: `\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-bottom: 16px;\">\n        <cmp-button hierarchy=\"link-gray\" size=\"sm\">Button</cmp-button>\n        <cmp-button hierarchy=\"link-gray\" size=\"md\">Button</cmp-button>  \n        <cmp-button hierarchy=\"link-gray\" size=\"lg\">Button</cmp-button>\n        <cmp-button hierarchy=\"link-gray\" size=\"xl\">Button</cmp-button>\n        <cmp-button hierarchy=\"link-gray\" size=\"2xl\">Button</cmp-button>\n      </div>\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap;\">\n        <cmp-button hierarchy=\"link-color\" size=\"sm\">Button</cmp-button>\n        <cmp-button hierarchy=\"link-color\" size=\"md\">Button</cmp-button>  \n        <cmp-button hierarchy=\"link-color\" size=\"lg\">Button</cmp-button>\n        <cmp-button hierarchy=\"link-color\" size=\"xl\">Button</cmp-button>\n        <cmp-button hierarchy=\"link-color\" size=\"2xl\">Button</cmp-button>\n      </div>\n    `,\n  }),\n}"
                 },
                 {
                     "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/components/src/stories/button.stories.ts",
+                    "file": "projects/components/src/lib/cmp-button.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<ButtonComponent>",
-                    "defaultValue": "{\n  title: 'Example/Button',\n  component: ButtonComponent,\n  tags: ['autodocs'],\n  argTypes: {\n    backgroundColor: {\n      control: 'color',\n    },\n  },\n  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args\n  args: { onClick: fn() },\n}"
+                    "type": "Meta<CmpButtonComponent>",
+                    "defaultValue": "{\n  title: 'Components/Button',\n  component: CmpButtonComponent,\n  parameters: {\n    layout: 'centered',\n  },\n  argTypes: {\n    size: {\n      control: { type: 'select' },\n      options: ['sm', 'md', 'lg', 'xl', '2xl'],\n    },\n    hierarchy: {\n      control: { type: 'select' },\n      options: ['primary', 'secondary-gray', 'secondary-color', 'tertiary-gray', 'tertiary-color', 'link-gray', 'link-color'],\n    },\n    icon: {\n      control: { type: 'select' },\n      options: ['default', 'dot-leading', 'only'],\n    },\n    disabled: {\n      control: 'boolean',\n    },\n    type: {\n      control: { type: 'select' },\n      options: ['button', 'submit', 'reset'],\n    },\n  },\n  args: {\n    size: 'md',\n    hierarchy: 'primary',\n    icon: 'default',\n    disabled: false,\n    type: 'button',\n  },\n}"
                 },
                 {
                     "name": "Primary",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/components/src/stories/button.stories.ts",
+                    "file": "projects/components/src/lib/cmp-button.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n    primary: true,\n    label: 'Button',\n  },\n}"
+                    "type": "ButtonStory",
+                    "defaultValue": "{\n  render: () => ({\n    template: `\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap;\">\n        <cmp-button hierarchy=\"primary\" size=\"sm\">Button</cmp-button>\n        <cmp-button hierarchy=\"primary\" size=\"md\">Button</cmp-button>  \n        <cmp-button hierarchy=\"primary\" size=\"lg\">Button</cmp-button>\n        <cmp-button hierarchy=\"primary\" size=\"xl\">Button</cmp-button>\n        <cmp-button hierarchy=\"primary\" size=\"2xl\">Button</cmp-button>\n      </div>\n    `,\n  }),\n}"
                 },
                 {
-                    "name": "Secondary",
+                    "name": "SecondaryColor",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/components/src/stories/button.stories.ts",
+                    "file": "projects/components/src/lib/cmp-button.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n    label: 'Button',\n  },\n}"
+                    "type": "ButtonStory",
+                    "defaultValue": "{\n  render: () => ({\n    template: `\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap;\">\n        <cmp-button hierarchy=\"secondary-color\" size=\"sm\">Button</cmp-button>\n        <cmp-button hierarchy=\"secondary-color\" size=\"md\">Button</cmp-button>  \n        <cmp-button hierarchy=\"secondary-color\" size=\"lg\">Button</cmp-button>\n        <cmp-button hierarchy=\"secondary-color\" size=\"xl\">Button</cmp-button>\n        <cmp-button hierarchy=\"secondary-color\" size=\"2xl\">Button</cmp-button>\n      </div>\n    `,\n  }),\n}"
                 },
                 {
-                    "name": "Small",
+                    "name": "SecondaryGray",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/components/src/stories/button.stories.ts",
+                    "file": "projects/components/src/lib/cmp-button.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n    size: 'small',\n    label: 'Button',\n  },\n}"
+                    "type": "ButtonStory",
+                    "defaultValue": "{\n  render: () => ({\n    template: `\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap;\">\n        <cmp-button hierarchy=\"secondary-gray\" size=\"sm\">Button</cmp-button>\n        <cmp-button hierarchy=\"secondary-gray\" size=\"md\">Button</cmp-button>  \n        <cmp-button hierarchy=\"secondary-gray\" size=\"lg\">Button</cmp-button>\n        <cmp-button hierarchy=\"secondary-gray\" size=\"xl\">Button</cmp-button>\n        <cmp-button hierarchy=\"secondary-gray\" size=\"2xl\">Button</cmp-button>\n      </div>\n    `,\n  }),\n}"
+                },
+                {
+                    "name": "Tertiary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/cmp-button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ButtonStory",
+                    "defaultValue": "{\n  render: () => ({\n    template: `\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-bottom: 16px;\">\n        <cmp-button hierarchy=\"tertiary-gray\" size=\"sm\">Button</cmp-button>\n        <cmp-button hierarchy=\"tertiary-gray\" size=\"md\">Button</cmp-button>  \n        <cmp-button hierarchy=\"tertiary-gray\" size=\"lg\">Button</cmp-button>\n        <cmp-button hierarchy=\"tertiary-gray\" size=\"xl\">Button</cmp-button>\n        <cmp-button hierarchy=\"tertiary-gray\" size=\"2xl\">Button</cmp-button>\n      </div>\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap;\">\n        <cmp-button hierarchy=\"tertiary-color\" size=\"sm\">Button</cmp-button>\n        <cmp-button hierarchy=\"tertiary-color\" size=\"md\">Button</cmp-button>  \n        <cmp-button hierarchy=\"tertiary-color\" size=\"lg\">Button</cmp-button>\n        <cmp-button hierarchy=\"tertiary-color\" size=\"xl\">Button</cmp-button>\n        <cmp-button hierarchy=\"tertiary-color\" size=\"2xl\">Button</cmp-button>\n      </div>\n    `,\n  }),\n}"
+                },
+                {
+                    "name": "WithIcons",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/cmp-button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ButtonStory",
+                    "defaultValue": "{\n  render: () => ({\n    template: `\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-bottom: 16px;\">\n        <cmp-button hierarchy=\"primary\" icon=\"dot-leading\">Button</cmp-button>\n        <cmp-button hierarchy=\"secondary-gray\" icon=\"dot-leading\">Button</cmp-button>\n        <cmp-button hierarchy=\"secondary-color\" icon=\"dot-leading\">Button</cmp-button>\n      </div>\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap;\">\n        <cmp-button hierarchy=\"primary\" icon=\"only\" size=\"sm\" ariaLabel=\"Primary icon button\"></cmp-button>\n        <cmp-button hierarchy=\"secondary-gray\" icon=\"only\" size=\"md\" ariaLabel=\"Secondary icon button\"></cmp-button>\n        <cmp-button hierarchy=\"tertiary-color\" icon=\"only\" size=\"lg\" ariaLabel=\"Tertiary icon button\"></cmp-button>\n      </div>\n    `,\n  }),\n}"
                 }
             ],
-            "projects/components/src/stories/header.stories.ts": [
+            "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts": [
                 {
-                    "name": "LoggedIn",
+                    "name": "defaultOptions",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/components/src/stories/header.stories.ts",
+                    "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n    user: {\n      name: 'Jane Doe',\n    },\n  },\n}"
-                },
-                {
-                    "name": "LoggedOut",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/components/src/stories/header.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{}"
+                    "type": "[]",
+                    "defaultValue": "['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5']"
                 },
                 {
                     "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/components/src/stories/header.stories.ts",
+                    "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<HeaderComponent>",
-                    "defaultValue": "{\n  title: 'Example/Header',\n  component: HeaderComponent,\n  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs\n  tags: ['autodocs'],\n  parameters: {\n    // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout\n    layout: 'fullscreen',\n  },\n  args: {\n    onLogin: fn(),\n    onLogout: fn(),\n    onCreateAccount: fn(),\n  },\n}"
-                }
-            ],
-            "projects/components/src/stories/page.stories.ts": [
+                    "type": "Meta<CmpDropdownComponent>",
+                    "defaultValue": "{\n  title: 'SCOTT Components/Dropdown',\n  component: CmpDropdownComponent,\n  parameters: {\n    layout: 'centered',\n  },\n  argTypes: {\n    type: {\n      control: { type: 'select' },\n      options: ['default', 'icon-leading', 'avatar-leading', 'dot-leading', 'search', 'tags'],\n    },\n    state: {\n      control: { type: 'select' },\n      options: ['default', 'placeholder', 'focused', 'open'],\n    },\n    placeholder: {\n      control: { type: 'text' },\n    },\n    label: {\n      control: { type: 'text' },\n    },\n    hintText: {\n      control: { type: 'text' },\n    },\n    supportingText: {\n      control: { type: 'text' },\n    },\n    disabled: {\n      control: { type: 'boolean' },\n    },\n    showLabel: {\n      control: { type: 'boolean' },\n    },\n    showHintText: {\n      control: { type: 'boolean' },\n    },\n    showSupportingText: {\n      control: { type: 'boolean' },\n    },\n    showScrollBar: {\n      control: { type: 'boolean' },\n    },\n    iconLeading: {\n      control: { type: 'text' },\n    },\n    avatarSrc: {\n      control: { type: 'text' },\n    },\n    options: {\n      control: { type: 'object' },\n    },\n    selectedValue: {\n      control: { type: 'text' },\n    },\n    ariaLabel: {\n      control: { type: 'text' },\n    },\n  },\n}"
+                },
                 {
-                    "name": "LoggedIn",
+                    "name": "SCOTT_AvatarLeading",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/components/src/stories/page.stories.ts",
+                    "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const loginButton = canvas.getByRole('button', { name: /Log in/i });\n    await expect(loginButton).toBeInTheDocument();\n    await userEvent.click(loginButton);\n    await expect(loginButton).not.toBeInTheDocument();\n\n    const logoutButton = canvas.getByRole('button', { name: /Log out/i });\n    await expect(logoutButton).toBeInTheDocument();\n  },\n}"
+                    "defaultValue": "{\n  args: {\n    type: 'avatar-leading',\n    state: 'placeholder',\n    placeholder: 'Select with avatar',\n    label: 'Avatar Leading Dropdown',\n    avatarSrc: 'https://via.placeholder.com/24x24',\n    options: defaultOptions,\n  },\n}"
                 },
                 {
-                    "name": "LoggedOut",
+                    "name": "SCOTT_Default",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/components/src/stories/page.stories.ts",
+                    "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{}"
+                    "defaultValue": "{\n  args: {\n    type: 'default',\n    state: 'placeholder',\n    placeholder: 'Select an option',\n    label: 'Choose Option',\n    options: defaultOptions,\n  },\n}"
                 },
                 {
-                    "name": "meta",
+                    "name": "SCOTT_Disabled",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/components/src/stories/page.stories.ts",
+                    "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<PageComponent>",
-                    "defaultValue": "{\n  title: 'Example/Page',\n  component: PageComponent,\n  parameters: {\n    // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout\n    layout: 'fullscreen',\n  },\n}"
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    type: 'default',\n    state: 'placeholder',\n    placeholder: 'Disabled dropdown',\n    label: 'Disabled Dropdown',\n    disabled: true,\n    options: defaultOptions,\n  },\n}"
+                },
+                {
+                    "name": "SCOTT_DotLeading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    type: 'dot-leading',\n    state: 'placeholder',\n    placeholder: 'Select with dot',\n    label: 'Dot Leading Dropdown',\n    options: defaultOptions,\n  },\n}"
+                },
+                {
+                    "name": "SCOTT_Focused",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    type: 'default',\n    state: 'focused',\n    placeholder: 'Focused dropdown',\n    label: 'Focused State',\n    options: defaultOptions,\n  },\n}"
+                },
+                {
+                    "name": "SCOTT_IconLeading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    type: 'icon-leading',\n    state: 'placeholder',\n    placeholder: 'Select with icon',\n    label: 'Icon Leading Dropdown',\n    iconLeading: '🔍',\n    options: defaultOptions,\n  },\n}"
+                },
+                {
+                    "name": "SCOTT_NoLabel",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    type: 'default',\n    state: 'placeholder',\n    placeholder: 'Select an option',\n    label: 'Hidden Label',\n    showLabel: false,\n    options: defaultOptions,\n  },\n}"
+                },
+                {
+                    "name": "SCOTT_NoScrollBar",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    type: 'default',\n    state: 'open',\n    placeholder: 'Select an option',\n    label: 'No Scroll Bar',\n    showScrollBar: false,\n    options: defaultOptions,\n  },\n}"
+                },
+                {
+                    "name": "SCOTT_Open",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    type: 'default',\n    state: 'open',\n    placeholder: 'Open dropdown',\n    label: 'Open State',\n    options: defaultOptions,\n  },\n}"
+                },
+                {
+                    "name": "SCOTT_Search",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    type: 'search',\n    state: 'placeholder',\n    placeholder: 'Search and select',\n    label: 'Search Dropdown',\n    options: defaultOptions,\n  },\n}"
+                },
+                {
+                    "name": "SCOTT_Tags",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    type: 'tags',\n    state: 'placeholder',\n    placeholder: 'Select tags',\n    label: 'Tags Dropdown',\n    options: defaultOptions,\n  },\n}"
+                },
+                {
+                    "name": "SCOTT_WithHintText",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    type: 'default',\n    state: 'placeholder',\n    placeholder: 'Select an option',\n    label: 'Dropdown with Hint',\n    hintText: 'Choose from the available options below',\n    options: defaultOptions,\n  },\n}"
+                },
+                {
+                    "name": "SCOTT_WithSelectedValue",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    type: 'default',\n    state: 'default',\n    placeholder: 'Select an option',\n    label: 'Pre-selected Dropdown',\n    selectedValue: 'Option 2',\n    options: defaultOptions,\n  },\n}"
+                },
+                {
+                    "name": "SCOTT_WithSupportingText",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    type: 'default',\n    state: 'placeholder',\n    placeholder: 'Select an option',\n    label: 'Dropdown with Support',\n    supportingText: 'This is supporting text to help users',\n    options: defaultOptions,\n  },\n}"
                 }
             ],
             "projects/components/.storybook/preview.ts": [
@@ -301,39 +608,26 @@
         "groupedFunctions": {},
         "groupedEnumerations": {},
         "groupedTypeAliases": {
-            "projects/components/src/stories/button.stories.ts": [
+            "projects/components/src/lib/cmp-button.component.stories.ts": [
                 {
-                    "name": "Story",
+                    "name": "ButtonStory",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "StoryObj<ButtonComponent>",
-                    "file": "projects/components/src/stories/button.stories.ts",
+                    "rawtype": "StoryObj<CmpButtonComponent>",
+                    "file": "projects/components/src/lib/cmp-button.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
                     "kind": 183
                 }
             ],
-            "projects/components/src/stories/header.stories.ts": [
+            "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "StoryObj<HeaderComponent>",
-                    "file": "projects/components/src/stories/header.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
-            "projects/components/src/stories/page.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<PageComponent>",
-                    "file": "projects/components/src/stories/page.stories.ts",
+                    "rawtype": "StoryObj<CmpDropdownComponent>",
+                    "file": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -358,17 +652,17 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/components/src/stories/button.stories.ts",
+                "filePath": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "Large",
+                "name": "defaultOptions",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
             },
             {
-                "filePath": "projects/components/src/stories/button.stories.ts",
+                "filePath": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -378,7 +672,217 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/components/src/stories/button.stories.ts",
+                "filePath": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SCOTT_AvatarLeading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SCOTT_Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SCOTT_Disabled",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SCOTT_DotLeading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SCOTT_Focused",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SCOTT_IconLeading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SCOTT_NoLabel",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SCOTT_NoScrollBar",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SCOTT_Open",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SCOTT_Search",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SCOTT_Tags",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SCOTT_WithHintText",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SCOTT_WithSelectedValue",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SCOTT_WithSupportingText",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/HELLO-WORLD-cmp-dropdown.component.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/cmp-button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "AllSizes",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/cmp-button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/cmp-button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "DisabledStates",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/cmp-button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Interactive",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/cmp-button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Links",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/cmp-button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/cmp-button.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -388,111 +892,51 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/components/src/stories/button.stories.ts",
+                "filePath": "projects/components/src/lib/cmp-button.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "Secondary",
+                "name": "SecondaryColor",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
             },
             {
-                "filePath": "projects/components/src/stories/button.stories.ts",
+                "filePath": "projects/components/src/lib/cmp-button.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "Small",
+                "name": "SecondaryGray",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
             },
             {
-                "filePath": "projects/components/src/stories/button.stories.ts",
+                "filePath": "projects/components/src/lib/cmp-button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Tertiary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/cmp-button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "WithIcons",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/cmp-button.component.stories.ts",
                 "type": "type alias",
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
-                "name": "Story",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/components/src/stories/header.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "LoggedIn",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/components/src/stories/header.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "LoggedOut",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/components/src/stories/header.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "meta",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/components/src/stories/header.stories.ts",
-                "type": "type alias",
-                "linktype": "miscellaneous",
-                "linksubtype": "typealias",
-                "name": "Story",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/components/src/stories/page.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "LoggedIn",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/components/src/stories/page.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "LoggedOut",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/components/src/stories/page.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "meta",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/components/src/stories/page.stories.ts",
-                "type": "type alias",
-                "linktype": "miscellaneous",
-                "linksubtype": "typealias",
-                "name": "Story",
+                "name": "ButtonStory",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

@@ -1,15 +1,3 @@
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'cmp-components',
-  imports: [],
-  template: `
-    <p>
-      components works!
-    </p>
-  `,
-  styles: ``
-})
-export class Components {
-
-}
+// Export all components from this library
+export * from './cmp-button.component';
+export * from './HELLO-WORLD-cmp-dropdown.component';

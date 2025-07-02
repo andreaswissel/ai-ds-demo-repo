@@ -1,0 +1,114 @@
+# Button Component
+
+The Button component is a flexible and accessible button implementation that follows the design system specifications from Figma.
+
+## Overview
+
+The Button component provides different hierarchies, sizes, and icon configurations to support various use cases throughout your application.
+
+## Features
+
+- **Multiple Hierarchies**: Primary, Secondary (Gray/Color), Tertiary (Gray/Color), Link (Gray/Color)
+- **Five Sizes**: sm, md, lg, xl, 2xl
+- **Icon Support**: Leading icons, trailing icons, or icon-only buttons
+- **Accessibility**: Full keyboard navigation and ARIA support
+- **Interactive States**: Hover, focus, and disabled states
+- **Event Handling**: Custom click event emission
+
+## Usage
+
+### Basic Button
+
+```typescript
+<cmp-button>Click Me</cmp-button>
+```
+
+### With Size and Hierarchy
+
+```typescript
+<cmp-button size="lg" hierarchy="primary">
+  Primary Button
+</cmp-button>
+```
+
+### With Icons
+
+```typescript
+<!-- Leading icon -->
+<cmp-button icon="dot-leading">
+  With Icon
+</cmp-button>
+
+<!-- Icon only -->
+<cmp-button icon="only" ariaLabel="Settings">
+</cmp-button>
+```
+
+### Custom Icons
+
+```typescript
+<cmp-button iconLeading="fas fa-user">
+  User Profile
+</cmp-button>
+```
+
+## Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `size` | `'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'` | `'md'` | Button size |
+| `hierarchy` | `'primary' \| 'secondary-gray' \| 'secondary-color' \| 'tertiary-gray' \| 'tertiary-color' \| 'link-gray' \| 'link-color'` | `'primary'` | Button hierarchy/style |
+| `icon` | `'default' \| 'dot-leading' \| 'only'` | `'default'` | Icon configuration |
+| `disabled` | `boolean` | `false` | Disabled state |
+| `type` | `'button' \| 'submit' \| 'reset'` | `'button'` | HTML button type |
+| `ariaLabel` | `string` | `undefined` | ARIA label for accessibility |
+| `iconLeading` | `string` | `undefined` | CSS class for leading icon |
+| `iconTrailing` | `string` | `undefined` | CSS class for trailing icon |
+
+## Events
+
+| Event | Description | Payload |
+|-------|-------------|---------|
+| `buttonClick` | Emitted when button is clicked | `Event` |
+
+## Hierarchy Examples
+
+### Primary
+Primary buttons are used for the main action in a section or screen.
+
+### Secondary
+Secondary buttons are used for secondary actions or as alternatives to primary buttons.
+
+### Tertiary
+Tertiary buttons are used for less important actions or as subtle alternatives.
+
+### Link
+Link buttons are used for navigation or actions that behave like links.
+
+## Accessibility
+
+- Uses semantic `<button>` element
+- Supports keyboard navigation (Enter and Space keys)
+- Provides ARIA labels for icon-only buttons
+- Maintains proper focus management
+- Follows WCAG 2.1 guidelines for color contrast and interaction
+
+## Design Tokens
+
+The component uses the following design tokens that align with the Figma design system:
+
+- **Colors**: Primary (#7f56d9), Secondary grays, Focus states
+- **Spacing**: Consistent padding and margins
+- **Typography**: Font weights and sizes
+- **Shadows**: Subtle drop shadows for depth
+- **Border Radius**: 8px for rounded corners
+
+## Best Practices
+
+1. Use Primary buttons for main actions
+2. Use Secondary buttons for alternative actions
+3. Use Tertiary buttons for less important actions
+4. Use Link buttons for navigation
+5. Always provide `ariaLabel` for icon-only buttons
+6. Don't use more than one Primary button per section
+7. Use consistent sizing within related button groups

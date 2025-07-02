@@ -1,0 +1,73 @@
+import { Meta, Controls, Stories, Primary } from '@storybook/addon-docs/blocks';
+import * as DropdownStories from './HELLO-WORLD-cmp-dropdown.component.stories';
+
+<Meta of={DropdownStories} />
+
+# Dropdown Component
+
+The Dropdown component provides a customizable select input with various types and states, designed to be accessible and responsive.
+
+## Overview
+
+The dropdown component supports multiple types including default, icon-leading, avatar-leading, dot-leading, search, and tags variations. It follows WCAG accessibility guidelines and includes proper ARIA attributes.
+
+## Props
+
+<Controls />
+
+## Types
+
+### Default
+The standard dropdown with basic functionality.
+
+### Icon Leading
+Dropdown with an icon positioned before the text.
+
+### Avatar Leading
+Dropdown with an avatar image positioned before the text.
+
+### Dot Leading
+Dropdown with a colored dot indicator positioned before the text.
+
+### Search
+Dropdown optimized for search functionality.
+
+### Tags
+Dropdown designed for tag selection.
+
+## States
+
+- **Default**: Normal state
+- **Placeholder**: When no option is selected
+- **Focused**: When the dropdown has focus
+- **Open**: When the dropdown menu is expanded
+- **Disabled**: When the dropdown is not interactive
+
+## Accessibility
+
+- Uses semantic HTML with proper ARIA attributes
+- Keyboard navigation support
+- Screen reader compatible
+- Focus management for dropdown interactions
+
+## Examples
+
+<Primary />
+
+<Stories />
+
+## Usage Guidelines
+
+- Use clear, descriptive labels for dropdown options
+- Provide helpful hint text when needed
+- Consider the context when choosing dropdown types
+- Ensure sufficient color contrast for all states
+- Test with keyboard navigation and screen readers
+
+## Best Practices
+
+- Keep option lists manageable in length
+- Use search functionality for long lists
+- Provide clear feedback for selection states
+- Consider grouping related options
+- Ensure the component works across different screen sizes

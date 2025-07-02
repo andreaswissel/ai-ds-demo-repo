@@ -1,0 +1,41 @@
+<button
+  [type]="type"
+  [disabled]="disabled"
+  [attr.aria-label]="ariaLabel"
+  [ngClass]="buttonClasses"
+  (click)="onClick($event)"
+>
+  @if (hasIconLeading && !isIconOnly) {
+    <span class="cmp-button__icon cmp-button__icon--leading">
+      @if (iconLeading) {
+        <i [class]="iconLeading"></i>
+      } @else {
+        <svg class="cmp-button__icon-svg" viewBox="0 0 20 20" fill="currentColor">
+          <circle cx="10" cy="10" r="3" />
+        </svg>
+      }
+    </span>
+  }
+  
+  @if (isIconOnly) {
+    <span class="cmp-button__icon cmp-button__icon--only">
+      @if (iconLeading) {
+        <i [class]="iconLeading"></i>
+      } @else {
+        <svg class="cmp-button__icon-svg" viewBox="0 0 20 20" fill="currentColor">
+          <circle cx="10" cy="10" r="3" />
+        </svg>
+      }
+    </span>
+  } @else {
+    <span class="cmp-button__text">
+      <ng-content></ng-content>
+    </span>
+  }
+  
+  @if (hasIconTrailing && !isIconOnly) {
+    <span class="cmp-button__icon cmp-button__icon--trailing">
+      <i [class]="iconTrailing"></i>
+    </span>
+  }
+</button>

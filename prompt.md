@@ -1,0 +1,2 @@
+1. Let's work on this Figma file: https://www.figma.com/design/ojQcb8vS8mhTODEqXZMrEH/MCP-TEST?node-id=1-105&t=LuJXLtsW5OuRWTkJ-4
+2. Analyze the components properties first and then implement it as accurately as possible according to the coding guidelines here and component properties you find in Figma
